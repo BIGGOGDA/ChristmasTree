@@ -4,16 +4,24 @@
 
 这个项目不仅仅是一棵树，它是一个承载记忆的交互式画廊。成百上千个粒子、璀璨的彩灯和悬浮的拍立得照片共同组成了一棵奢华的圣诞树。用户可以通过手势控制树的形态（聚合/散开）和视角旋转，体验电影级的视觉盛宴。
 
-![Project Preview](public/preview.png)
-*(注：建议在此处上传一张你的项目运行截图)*
+#### 预览图
 
-## ✨ 核心特性
+![Project Preview](public/preview.png)
+
+
+## ✨ 原版核心特性
 
 * **极致视觉体验**：由 45,000+ 个发光粒子组成的树身，配合动态光晕 (Bloom) 和辉光效果，营造梦幻氛围。
 * **记忆画廊**：照片以“拍立得”风格悬浮在树上，每一张都是一个独立的发光体，支持双面渲染。
 * **AI 手势控制**：无需鼠标，通过摄像头捕捉手势即可控制树的形态（聚合/散开）和视角旋转。
 * **丰富细节**：包含动态闪烁的彩灯、飘落的金银雪花、以及随机分布的圣诞礼物和糖果装饰。
 * **高度可定制**：**支持用户轻松替换为自己的照片，并自由调整照片数量。**
+
+### ✨✨✨ 新增特性
+
+* **更好的视觉体验**：在原版基础上添加了金属小球，落雪，更高的饱和度，更美观
+* **展示友好**：增加预览模式，自动旋转
+* **背景音乐支持**：添加背景音乐，更有氛围
 
 ## 🛠️ 技术栈
 
@@ -48,6 +56,17 @@ npm run dev
 打开文件：src/App.tsx
 找到大约 第 19 行 的代码：// --- 动态生成照片列表 (top.jpg + 1.jpg 到 31.jpg) ---
 const TOTAL_NUMBERED_PHOTOS = 31; // <--- 修改这个数字！
+
+### 4. 修改默认音乐
+
+自定义音乐默认读取本地路径音乐，如果没有则读取在线链接
+
+音乐mp3文件本地路径：public\music
+
+打开文件：src/App.tsx，35行可修改路径和链接
+
+
+
 ### 🖐️ 手势控制说明
 * **本项目内置了 AI 手势识别系统，请站在摄像头前进行操作（屏幕右下角有 DEBUG 按钮可查看摄像头画面）**：
 🖐 张开手掌 (Open Palm)	Disperse (散开)	圣诞树炸裂成漫天飞舞的粒子和照片
@@ -56,17 +75,36 @@ const TOTAL_NUMBERED_PHOTOS = 31; // <--- 修改这个数字！
 👋 手掌上下移动	俯仰视角	手向上移，视角抬高；手向下移，视角降低
 ### ⚙️ 进阶配置
 * **如果你熟悉代码，可以在 src/App.tsx 中的 CONFIG 对象里调整更多视觉参数**：
-  const CONFIG = {
-  colors: { ... }, // 修改树、灯光、边框的颜色
+  
+  ...
+  
   counts: {
-    foliage: 15000,   // 修改树叶粒子数量 (配置低可能会卡)
-    ornaments: 300,   // 修改悬挂的照片/拍立得数量
-    lights: 400       // 修改彩灯数量
+    foliage: 15000,          // 树叶粒子数量
+    photoOrnaments: 20,      // 悬挂的照片数量
+    regularOrnaments: 600,   // 普通装饰物(球/礼物/灯泡)数量 - 原代码中硬编码为600
+    elements: 400,           // (预留)
+    lights: 600              // 缠绕的灯串节点数量
   },
-  tree: { height: 22, radius: 9 }, // 修改树的大小
-  // ...
-};
+  
+  colors: {
+    emerald: '#004225',
+    gold: '#FFD700',
+    silver: '#ECEFF1',
+    red: '#D32F2F',
+    green: '#2E7D32',
+    white: '#FFFFFF',
+    warmLight: '#FFD54F',
+    lights: ['#FF0000', '#00FF00', '#0000FF', '#FFFF00'],
+    borders: ['#FFFAF0', '#F0E68C', '#E6E6FA', '#FFB6C1', '#98FB98', '#87CEFA', '#FFDAB9'],
+    giftColors: ['#D32F2F', '#FFD700', '#1976D2', '#2E7D32'],
+    candyColors: ['#FF0000', '#FFFFFF']
+  }
+  ...
+
 ### 📄 License
+
+原项目：https://github.com/moleculemmeng020425/christmas-tree.git
+
 MIT License. Feel free to use and modify for your own holiday celebrations!
 ### Merry Christmas! 🎄✨
 
