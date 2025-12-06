@@ -37,7 +37,7 @@
 确保你的电脑已安装 [Node.js](https://nodejs.org/) (建议 v18 或更高版本)。
 
 ### 2. 安装依赖
-在项目根目录下打开终端，运行：```bash npm install
+在项目根目录下打开终端，运行：```npm install
 ### 3. 启动项目
 npm run dev
 ### 🖼️ 自定义照片
